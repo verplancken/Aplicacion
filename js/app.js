@@ -1,4 +1,4 @@
-var url = windows.location.href;
+var url = window.location.href;
 var swLocation = 'Aplicacion/sw.js';
 
 if (navigator.serviceWorker) {
