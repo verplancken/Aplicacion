@@ -1,9 +1,9 @@
 //importacion
 importScripts('js/sw-utils.js');
 
-const STATIC_CHACHE= 'static-v1';
+const STATIC_CACHE= 'static-v1';
 const DYNAMIC_CACHE   = 'dynamic-v2';
-const INMUTABLE_CHACHE= 'inmutable-v1';
+const INMUTABLE_CACHE= 'inmutable-v1';
 
 const APP_SHELL = [
 	// '/',
@@ -29,10 +29,10 @@ const APP_SHELL_INMUTABLE = [
 ];
 
 self.addEventListener('install', e =>{
-	const cacheStatic = caches.open( STATIC_CHACHE ).then(cache =>
+	const cacheStatic = caches.open( STATIC_CACHE ).then(cache =>
 		cache.addAll(APP_SHELL));
 
-	const cacheInmutable = caches.open( INMUTABLE_CHACHE ).then(cache =>
+	const cacheInmutable = caches.open( INMUTABLE_CACHE ).then(cache =>
 		cache.addAll(APP_SHELL_INMUTABLE));
 
 	e.waitUntil( Promise.all([cacheStatic, cacheInmutable ]) );
@@ -66,7 +66,7 @@ const respuesta = self.addEventListener('fetch', e =>{
 			return res;
 		}else{
 			return fecth( e.request ).then(resp =>{
-				return actualizaCacheDinamico( DYNAMIC_CHACHE, e.request, newRes );
+				return actualizaCacheDinamico( DYNAMIC_CACHE, e.request, newRes );
 			});
 			
 		}
