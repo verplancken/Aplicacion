@@ -6,14 +6,16 @@ const DYNAMIC_CHACHE= 'dinamic-v1';
 const INMUTABLE_CHACHE= 'inmutable-v1';
 
 const APP_SHELL = [
-	'/',
+	// '/',
 	'index.html',
 	'css/style.css',
 	'img/favicon.ico',
-	'img/avatars/hulk.jpg',
-	'img/avatars/ironman.jpg',
-	'img/avatars/spiderman.jpg',
-	'img/avatars/thor.jpg',
+	'img/avatars/1.png',
+	'img/avatars/2.jpg',
+	'img/avatars/5.jpg',
+	'img/avatars/6.jpg',
+	'img/avatars/7.jpg',
+	'img/avatars/3.jpg',
 	'js/app.js',
 	'js/sw-utils.js'
 ];
