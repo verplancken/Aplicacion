@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Twittor</title>
 
@@ -11,7 +11,9 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="js/libs/plugins/mdtoast.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
 
     <link rel="shortcut icon" type="image/ico" href="img/favicon.ico"/>
 
@@ -22,6 +24,7 @@
 
     <!-- IOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
+
 
     <link rel="apple-touch-icon" href="img/icons/icon-192x192.png">
     <link rel="apple-touch-icon" sizes="152x152" href="img/icons/icon-152x152.png">
@@ -48,14 +51,15 @@
             <span id="salir-btn" class="fa fa-sign-out-alt out oculto animated fadeIn"></span>
             <span id="titulo">
                 <i class="fa fa-user"></i>
-            Seleccione Personaje</span>
+                Seleccione Personaje
+            </span>
             <span id="nuevo-btn" class="fa fa-pen-square new oculto animated fadeIn fast"></span>
         </span>
         <!-- Fin Titulo -->
 
         <!-- Modal -->
         <div id="modal" class="oculto">
-            <img id="modal-avatar" src="img/avatars/1.png">
+            <img id="modal-avatar" src="img/avatars/Dayanna.jpg">
 
             <span class="first"> 
                 <span id="titulo-modal">Nuevo mensaje</span>
@@ -65,6 +69,25 @@
 
             <div class="nuevo-mensaje">
                 <textarea id="txtMensaje" placeholder="Nuevo mensaje..." rows="5"></textarea>
+
+                <!-- <div class="modal-mapa oculto">
+                    <iframe
+                        width="100%"
+                        height="250"
+                        frameborder="0"
+                        src="https://www.google.com/maps/embed/v1/view?key=AIzaSyA-HXVa2jtkGfKtIJwisxgC46RaWqC1xuI&center=14.027334, -87.220878&zoom=17" allowfullscreen>
+                        </iframe>
+                </div > -->
+                <div class="camara-contenedor fadeIn fast oculto" align="center">
+                    
+                    <video id="player" autoplay style="height: 300px;"></video>
+
+                    <button id="tomar-foto-btn">
+                        <i class="fa fa-camera"></i>
+                        Tomar Foto
+                    </button>
+                </div>
+
             </div>
 
             
@@ -74,12 +97,12 @@
                 <i class="fa fa-paper-plane"></i>
             </div>
 
-            <div id="post-btn" class="fab-marker">
+            <div id="location-btn" class="fab-marker">
                 <i class="fa fa-map-marker-alt"></i>
             </div>
 
-            <div id="post-btn" class="fab-photo">
-                <i class="fa fa-image"></i>
+            <div id="photo-btn" class="fab-photo">
+                <i class="fa fa-camera"></i>
             </div>
 
         </div>
@@ -89,24 +112,29 @@
         <!-- Seleccion de personaje -->
         <div id="seleccion" class="seleccion animated fadeIn fast" align="center">
         
+            <!-- Botón de notificaciones -->
+            <button class="oculto btn-noti-activadas">Notificaciones Activadas</button>
+            <button class="oculto btn-noti-desactivadas">Notificaciones Desactivadas</button>
+            <!-- Fin de boton de notificaciones -->
+
             <div>
-                <img data-user="Hermoso" src="img/avatars/2.jpg" alt="spiderman" class="seleccion-avatar">
+                <img data-user="Hermoso" src="img/avatars/Hermoso.jpg" alt="Hermoso" class="seleccion-avatar">
             </div>
 
             <div>
-                <img data-user="Chulo" src="img/avatars/5.jpg" alt="Chulo" class="seleccion-avatar">
+                <img data-user="Chulo" src="img/avatars/Chulo.jpg" alt="Chulo" class="seleccion-avatar">
             </div>
 
             <div>
-                <img data-user="Sepsy" src="img/avatars/6.jpg" alt="Sepsy" class="seleccion-avatar">
+                <img data-user="Sepsy" src="img/avatars/Sepsy.jpg" alt="Sepsy" class="seleccion-avatar">
             </div>
 
             <div>
-                <img data-user="Amorts" src="img/avatars/7.jpg" alt="Amorts" class="seleccion-avatar">
+                <img data-user="Amorts" src="img/avatars/Amorts.jpg" alt="Amorts" class="seleccion-avatar">
             </div>
 
             <div>
-                <img data-user="Cosa" src="img/avatars/3.jpg" alt="Cosa" class="seleccion-avatar">
+                <img data-user="Cosa" src="img/avatars/Cosa.jpg" alt="Cosa" class="seleccion-avatar">
             </div>
 
         </div>
@@ -117,7 +145,7 @@
         <ul id="timeline" class="timeline oculto">
             
             <!-- Mensaje -->
-            <li class="animated fadeIn fast">
+            <!-- <li class="animated fadeIn fast">
                 <div class="avatar">
                     <img src="img/avatars/1.png">
                 </div>
@@ -125,12 +153,32 @@
                     <div class="bubble">
                         <h3>@Dayanna</h3>
                         <br/>
-                        Tengo una flor, que es para ti, con mucho amor, canto esta cancion que es para ti, es para ti...
+                         Tengo una flor, que es para ti, con mucho amor, canto esta cancion que es para ti, es para ti...
                     </div>
                     
                     <div class="arrow"></div>
                 </div>
-            </li>
+            </li> -->
+            <!-- Fin del mensaje -->
+
+            <!-- Mapa message -->
+            <!-- <li class="animated fadeIn fast">
+                <div class="avatar">
+                    <img src="img/avatars/1.jpg">
+                </div>
+                <div class="bubble-container">
+                    <div class="bubble">
+                        <iframe
+                            width="100%"
+                            height="250"
+                            frameborder="0" style="border:0"
+                            src="https://www.google.com/maps/embed/v1/view?key=AIzaSyA-HXVa2jtkGfKtIJwisxgC46RaWqC1xuI&center=14.027334, -87.220878&zoom=17" allowfullscreen>
+                            </iframe>
+                    </div>
+                    
+                    <div class="arrow"></div>
+                </div>
+            </li>  -->
             <!-- Fin del mensaje -->
 
         </ul>
@@ -139,7 +187,12 @@
 
       
     
-        <script src="js/libs/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/libs/plugins/mdtoast.min.js"></script>
+        
+        <!-- Camara Class -->
+        <script src="js/camara-class.js"></script>
         <script src="js/app.js"></script>
+    
 </body>
 </html>
