@@ -1,6 +1,6 @@
 
 var url = window.location.href;
-var swLocation = '/twittor/sw.js';
+var swLocation = '../sw.js';
 
 var swReg;
 
@@ -8,9 +8,8 @@ if ( navigator.serviceWorker ) {
 
 
     if ( url.includes('localhost') ) {
-        swLocation = '/sw.js';
+        swLocation = '../sw.js';
     }
-
 
     window.addEventListener('load', function() {
 
